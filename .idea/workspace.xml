@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d10f2d35-406e-4bbe-b382-260eb5898c17" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/WalletApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/config/MongoConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/AuditController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/BalanceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/ClientsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/DepositController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/TransferController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/WalletsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/WithdrawController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/dto/AuthDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/dto/BalanceDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/dto/ClientDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/dto/DepositDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/dto/StatementDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/dto/TransferDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/dto/WalletDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/dto/WithdrawDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Audit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/AuditLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Auth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/CurrencyTax.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Statement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/TransferMetadata.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Wallet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/AuditRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/AuthRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/ClientsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/CurrencyTaxRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/StatementRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/WalletsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuditService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/BalanceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/ClientsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/DepositService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/TransferService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/WalletsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/WithdrawService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/util/CurrencyTaxInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/util/DateUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/util/HashUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/util/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/util/ValidUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="30QMWdOVPDcKymUISvzQwc8QP1L" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.WalletApplication.executor": "Run",
+    "Maven.wallet [clean,compile].executor": "Run",
+    "Maven.wallet [compile].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/leonardomatos/workspace/test-java-wallet-spring-mongo/src/main/java/br/com/pay/wallet/repository",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository" />
+      <recent name="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.com.pay.wallet.util" />
+      <recent name="br.com.pay.wallet.controller" />
+      <recent name="br.com.pay.wallet.dto" />
+      <recent name="br.com.pay.wallet.model" />
+      <recent name="br.com.pay.wallet.repository" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="test-java-wallet" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="test-java-wallet" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d10f2d35-406e-4bbe-b382-260eb5898c17" name="Changes" comment="" />
+      <created>1753555376009</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1753555376009</updated>
+    </task>
+    <servers />
+  </component>
+</project>
