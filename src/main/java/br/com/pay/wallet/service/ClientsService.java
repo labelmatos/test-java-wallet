@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static br.com.pay.wallet.util.HashUtil.hashPassword;
+import static br.com.pay.wallet.util.HashUtil.hash;
 import static br.com.pay.wallet.util.ValidUtil.isValidCPF;
 import static br.com.pay.wallet.util.ValidUtil.isValidPhone;
 
@@ -46,7 +46,7 @@ public class ClientsService {
                         .setNickName(dto.nickName)
                         .setDocument(dto.document)
                         .setPhone(dto.phone)
-                        .setPassword(hashPassword(dto.password))
+                        .setPassword(hash(dto.password))
                         .setLocation(dto.location)
         );
     }

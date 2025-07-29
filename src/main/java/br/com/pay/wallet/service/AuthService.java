@@ -5,6 +5,7 @@ import br.com.pay.wallet.model.Client;
 import br.com.pay.wallet.repository.AuthRepository;
 import br.com.pay.wallet.repository.ClientsRepository;
 import br.com.pay.wallet.util.HashUtil;
+import br.com.pay.wallet.util.JwtUtil;
 import com.mongodb.client.MongoClient;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -25,17 +26,10 @@ public class AuthService {
     private ClientsRepository clientsRepository;
     private AuthRepository authRepository;
 
-    private final SecretKey secretKey = Keys.hmacShaKeyFor("MySuperSecretKeyForJwtThatIsAtLeast32BytesLong".getBytes(StandardCharsets.UTF_8));
-
     public String authenticate(String document, String password) throws Exception {
-        final Client client = clientsRepository.logIn(document, HashUtil.hashPassword(password));
+        final Client client = clientsRepository.logIn(document, HashUtil.hash(password));
         if (client != null) {
-            final String token = Jwts.builder()
-                    .setSubject(document)
-                    .setIssuedAt(new Date())
-                    .setExpiration(Date.from(Instant.now().plusSeconds(600))) // 10 minutes
-                    .signWith(secretKey, SignatureAlgorithm.HS256)
-                    .compact();
+            final String token = JwtUtil.generateToken(client);
 
             authRepository.create(Auth.build()
                     .setStatus("SUCCESS")

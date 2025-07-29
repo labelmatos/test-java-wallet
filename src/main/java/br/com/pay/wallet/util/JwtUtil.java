@@ -1,14 +1,26 @@
 package br.com.pay.wallet.util;
 
+import br.com.pay.wallet.model.Client;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
+import java.time.Instant;
 import java.util.Date;
 
 public class JwtUtil {
+    private static final SecretKey secretKey = Keys.hmacShaKeyFor("MySuperSecretKeyForJwtThatIsAtLeast32BytesLong".getBytes(StandardCharsets.UTF_8));
+
+    public static String generateToken(Client client) {
+        return Jwts.builder()
+                .setSubject(client.getDocument())
+                .setIssuedAt(new Date())
+                .setExpiration(Date.from(Instant.now().plusSeconds(600))) // 10 minutes
+                .signWith(secretKey, SignatureAlgorithm.HS256)
+                .compact();
+    }
 
     public static Claims extractAllClaims(String token) {
         return Jwts.parserBuilder()

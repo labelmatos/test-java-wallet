@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 
 public class HashUtil {
 
-    public static String hashPassword(String password) throws Exception {
+    public static String hash(String password) throws Exception {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] encodedhash = digest.digest(password.getBytes("UTF-8"));
         StringBuilder hexString = new StringBuilder(2 * encodedhash.length);
