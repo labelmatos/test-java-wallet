@@ -23,8 +23,11 @@ public class ClientsService {
 
     @Autowired
     private AuditService auditService;
+    @Autowired
     private ClientsRepository clientsRepository;
+    @Autowired
     private WalletsRepository walletsRepository;
+    @Autowired
     private StatementRepository statementRepository;
 
     public void register(ClientDTO dto) throws Exception {

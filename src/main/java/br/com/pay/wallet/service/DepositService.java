@@ -20,8 +20,11 @@ public class DepositService {
 
     @Autowired
     private AuditService auditService;
+    @Autowired
     private MongoClient mongoClient;
+    @Autowired
     private WalletsRepository walletsRepository;
+    @Autowired
     private StatementRepository statementRepository;
 
     public void deposit(String walletId, DepositDTO dto, String document) throws Exception {

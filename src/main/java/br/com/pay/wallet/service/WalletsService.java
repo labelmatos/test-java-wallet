@@ -19,7 +19,9 @@ public class WalletsService {
 
     @Autowired
     private AuditService auditService;
+    @Autowired
     private WalletsRepository walletsRepository;
+    @Autowired
     private StatementRepository statementRepository;
 
     public void createWallet(WalletDTO dto, String document) {

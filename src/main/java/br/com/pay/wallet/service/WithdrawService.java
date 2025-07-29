@@ -19,6 +19,7 @@ public class WithdrawService {
 
     @Autowired
     private AuditService auditService;
+    @Autowired
     private MongoClient mongoClient;
 
     public void withdraw(String walletId, WithdrawDTO dto, String document) {

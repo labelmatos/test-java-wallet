@@ -5,20 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d10f2d35-406e-4bbe-b382-260eb5898c17" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/postman-collection.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/br/com/pay/wallet/controller/AuthControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/br/com/pay/wallet/service/AuthServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/br/com/pay/wallet/util/DateUtilTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/br/com/pay/wallet/util/HashUtilTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/br/com/pay/wallet/util/JwtUtilTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/br/com/pay/wallet/util/ValidUtilTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/config/MongoConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/config/MongoConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuditService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuditService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/BalanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/BalanceService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/ClientsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/ClientsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/util/HashUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/util/HashUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/util/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/util/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/DepositService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/DepositService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/TransferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/TransferService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/WalletsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/WalletsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/WithdrawService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/WithdrawService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +61,7 @@
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/leonardomatos/workspace/test-java-wallet-spring-mongo",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
@@ -89,7 +85,20 @@
       <recent name="br.com.pay.wallet.repository" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AuthControllerTest">
+  <component name="RunManager" selected="Application.WalletApplication">
+    <configuration name="WalletApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="br.com.pay.wallet.WalletApplication" />
+      <module name="wallet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.com.pay.wallet.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AuthControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="wallet" />
       <extension name="coverage">
@@ -116,22 +125,6 @@
       <option name="PACKAGE_NAME" value="br.com.pay.wallet.service" />
       <option name="MAIN_CLASS_NAME" value="br.com.pay.wallet.service.AuthServiceTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DateUtilTest.testUTCDate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="wallet" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="br.com.pay.wallet.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="br.com.pay.wallet.util" />
-      <option name="MAIN_CLASS_NAME" value="br.com.pay.wallet.util.DateUtilTest" />
-      <option name="METHOD_NAME" value="testUTCDate" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -180,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.WalletApplication" />
         <item itemvalue="JUnit.AuthControllerTest" />
         <item itemvalue="JUnit.AuthServiceTest" />
         <item itemvalue="JUnit.ValidUtilTest" />
         <item itemvalue="JUnit.JwtUtilTest.testGenerateAndParseToken" />
-        <item itemvalue="JUnit.DateUtilTest.testUTCDate" />
       </list>
     </recent_temporary>
   </component>
@@ -203,10 +196,15 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuthService.java</url>
-          <line>29</line>
+          <line>31</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="getMongoCollection()" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

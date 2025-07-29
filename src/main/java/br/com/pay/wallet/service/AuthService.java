@@ -23,7 +23,9 @@ public class AuthService {
 
     @Autowired
     private MongoClient mongoClient;
+    @Autowired
     private ClientsRepository clientsRepository;
+    @Autowired
     private AuthRepository authRepository;
 
     public String authenticate(String document, String password) throws Exception {

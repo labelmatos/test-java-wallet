@@ -28,9 +28,13 @@ public class TransferService {
 
     @Autowired
     private AuditService auditService;
+    @Autowired
     private MongoClient mongoClient;
+    @Autowired
     private WalletsRepository walletsRepository;
+    @Autowired
     private StatementRepository statementRepository;
+    @Autowired
     private CurrencyTaxRepository currencyTaxRepository;
 
     public void transfer(String walletId, TransferDTO dto, String document) throws Exception {

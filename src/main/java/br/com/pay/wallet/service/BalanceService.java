@@ -19,8 +19,11 @@ public class BalanceService {
 
     @Autowired
     private MongoClient mongoClient;
+    @Autowired
     private AuditService auditService; // TODO: implementar
+    @Autowired
     private WalletsRepository walletsRepository;
+    @Autowired
     private StatementRepository statementRepository;
 
     public BalanceDTO getWalletBalance(String walletId, String document) {

@@ -15,6 +15,7 @@ public class AuditService {
 
     @Autowired
     private MongoClient mongoClient;
+    @Autowired
     private AuditRepository auditRepository;
 
     public void log(String document, String action, Object details) {
