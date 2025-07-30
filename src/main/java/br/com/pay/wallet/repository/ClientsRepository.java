@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClientsRepository extends MongoRepository<Client, String> {
-    Client findByIdAndPassword(String id, String password);
+    Client findByIdAndPasswordAndDeletedFalse(String id, String password);
 
 }

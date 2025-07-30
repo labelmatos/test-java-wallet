@@ -5,6 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d10f2d35-406e-4bbe-b382-260eb5898c17" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/ClientsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/ClientsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/ClientsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/ClientsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/ClientsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/ClientsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/postman-collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/postman-collection.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

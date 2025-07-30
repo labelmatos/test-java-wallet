@@ -150,21 +150,26 @@
         {
           "name": "Soft Delete Account",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "DELETE",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{base_url}}/clientes",
+              "raw": "{{base_url}}/clients/me",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "clientes"
+                "clients",
+                "me"
               ]
             }
           },

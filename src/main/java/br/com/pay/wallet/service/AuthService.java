@@ -25,7 +25,7 @@ public class AuthService {
     private AuthRepository authRepository;
 
     public TokenDTO authenticate(String document, String password) throws Exception {
-        final Client client = clientsRepository.findByIdAndPassword(document, HashUtil.hash(password));
+        final Client client = clientsRepository.findByIdAndPasswordAndDeletedFalse(document, HashUtil.hash(password));
         if (client != null) {
             final TokenDTO token = new TokenDTO(JwtUtil.generateToken(client));
             authRepository.insert(Auth.build()

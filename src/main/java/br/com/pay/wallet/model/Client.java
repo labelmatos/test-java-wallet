@@ -16,6 +16,7 @@ public class Client {
     private String phone;
     private String password;
     private String location;
+    private Boolean deleted = false;
 
     public static Client newInstance() {
         return new Client();
@@ -93,6 +94,15 @@ public class Client {
 
     public Client setLocation(String location) {
         this.location = location;
+        return this;
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public Client setDeleted(Boolean deleted) {
+        this.deleted = deleted;
         return this;
     }
 

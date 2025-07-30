@@ -2,12 +2,16 @@ package br.com.pay.wallet.service;
 
 import br.com.pay.wallet.dto.ClientDTO;
 import br.com.pay.wallet.model.Client;
+import br.com.pay.wallet.model.Statement;
+import br.com.pay.wallet.model.Wallet;
 import br.com.pay.wallet.repository.ClientsRepository;
 import br.com.pay.wallet.repository.StatementRepository;
 import br.com.pay.wallet.repository.WalletsRepository;
 import br.com.pay.wallet.util.ValidUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import static br.com.pay.wallet.util.HashUtil.hash;
 import static br.com.pay.wallet.util.ValidUtil.isValidCPF;
@@ -73,16 +77,21 @@ public class ClientsService {
         return client.toDTO();
     }
 
-    public void softDeleteAccount(String document) {
-//        final List<Wallet> wallets = walletsRepository.list(document);
-//        for (Wallet wallet : wallets) {
-//            final Statement last = statementRepository.findById(wallet.getId());
-//            if (last != null && last.getFinalValue() > 0) {
-//                throw new IllegalArgumentException("All wallets needs to be with no value to remove your account.");
-//            }
-//        }
-//        clientsRepository.delete(document);
-//        auditService.log(document, "SOFT_DELETE_ACCOUNT", new Document("status", "deleted"));
+    public void softDeleteAccount(String document) throws Exception {
+        Client client = clientsRepository.findById(document).orElseGet(null);
+        if (client == null) {
+            throw new IllegalArgumentException("Client not found.");
+        }
+
+        final List<Wallet> wallets = walletsRepository.findByOwnerDocument(document);
+        for (Wallet wallet : wallets) {
+            final Statement last = statementRepository.findFirstByWalletIdOrderByCreatedAtDesc(wallet.getId());
+            if (last != null && last.getFinalValue() > 0) {
+                throw new IllegalArgumentException("All wallets needs to be with no value to remove your account.");
+            }
+        }
+        clientsRepository.save(client.setDeleted(true));
+        auditService.log(document, "SOFT_DELETE_ACCOUNT", client);
     }
 }
 

@@ -79,8 +79,7 @@ public class ClientsController {
             if (JwtUtil.isTokenExpired(token)) {
                 return ResponseEntity.status(401).body("Expired Token. Sign in again.");
             }
-            String document = JwtUtil.extractSubject(token);
-            clientsService.softDeleteAccount(document);
+            clientsService.softDeleteAccount(JwtUtil.extractSubject(token));
             return ResponseEntity.ok("Client deleted.");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(412).body(e.getMessage());
