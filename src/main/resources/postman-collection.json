@@ -570,7 +570,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/balance/:walletId/extract?startDate=2025-07-01&endDate=2025-07-31",
+              "raw": "{{base_url}}/balance/:walletId/extract?startDate=2025-07-01&endDate=2025-07-30",
               "host": [
                 "{{base_url}}"
               ],
@@ -586,7 +586,7 @@
                 },
                 {
                   "key": "endDate",
-                  "value": "2025-07-31"
+                  "value": "2025-07-30"
                 }
               ],
               "variable": [
@@ -607,14 +607,18 @@
         {
           "name": "Audit Logs by Document",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
-              }
-            ],
+            "header": [],
             "url": {
               "raw": "{{base_url}}/audit/:document",
               "host": [
@@ -637,31 +641,41 @@
         {
           "name": "Audit Logs by Document and Date",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{base_url}}/audit/{{document}}?startDate=2025-07-01T00:00:00Z&endDate=2025-07-26T23:59:59Z",
+              "raw": "{{base_url}}/audit/:document?startDate=2025-07-01&endDate=2025-07-27",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "audit",
-                "{{document}}"
+                ":document"
               ],
               "query": [
                 {
                   "key": "startDate",
-                  "value": "2025-07-01T00:00:00Z"
+                  "value": "2025-07-01"
                 },
                 {
                   "key": "endDate",
-                  "value": "2025-07-26T23:59:59Z"
+                  "value": "2025-07-27"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "document",
+                  "value": "12345678900"
                 }
               ]
             }

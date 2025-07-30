@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d10f2d35-406e-4bbe-b382-260eb5898c17" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/AuditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/AuditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/AuditLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/AuditLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/AuditRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/AuditRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/StatementRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/StatementRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuditService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuditService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/BalanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/BalanceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/ClientsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/ClientsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/WalletsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/WalletsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/util/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/util/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/postman-collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/postman-collection.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,20 +183,6 @@
     <servers />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/ClientsService.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuditService.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="getMongoCollection()" />
