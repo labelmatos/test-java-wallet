@@ -1,8 +1,10 @@
 {
   "info": {
+    "_postman_id": "eb927145-710b-484c-9f87-eb57427aebf8",
     "name": "Java Wallet API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_postman_id": "wallet-api-collection"
+    "_exporter_id": "41526816",
+    "_collection_link": "https://betrainig.postman.co/workspace/beTraining-Workspace~3ad8c3a0-dede-423a-8f73-13ff489b066c/collection/41526816-eb927145-710b-484c-9f87-eb57427aebf8?action=share&source=collection_link&creator=41526816"
   },
   "item": [
     {
@@ -10,9 +12,32 @@
       "item": [
         {
           "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "pm.environment.set(\"wallet.auth.token\", jsonData[\"token\"]);",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"document\": \"12345678900\",\n  \"password\": \"1q2w3e4r\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{base_url}}/auth/login",
               "host": [
@@ -22,12 +47,9 @@
                 "auth",
                 "login"
               ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"document\": \"35562363895\",\n  \"password\": \"1q2w3e4r\"\n}"
             }
-          }
+          },
+          "response": []
         }
       ]
     },
@@ -45,46 +67,85 @@
                 "type": "text"
               }
             ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Leonardo\",\n  \"lastName\": \"Matos\",\n  \"nickName\": \"Leo\",\n  \"document\": \"12345678900\",\n  \"phone\": \"11993712235\",\n  \"password\": \"1q2w3e4r\",\n  \"location\": \"BR\"\n}"
+            },
             "url": {
-              "raw": "{{base_url}}/clientes",
+              "raw": "{{base_url}}/clients",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "clientes"
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Me",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
               ]
             },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"firstName\": \"Leonardo\",\n  \"lastName\": \"Matos\",\n  \"nickName\": \"L\\u00e9o\",\n  \"document\": \"35562363895\",\n  \"phone\": \"11993712235\",\n  \"password\": \"1q2w3e4r\",\n  \"location\": \"BR\"\n}"
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/clients/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "clients",
+                "me"
+              ]
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "Update Nickname/Phone",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PATCH",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nickName\": \"Leonardo Atualizado\",\n  \"phone\": \"11990001122\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
               }
-            ],
+            },
             "url": {
-              "raw": "{{base_url}}/clientes",
+              "raw": "{{base_url}}/clients",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "clientes"
+                "clients"
               ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"nickName\": \"Leonardo Atualizado\",\n  \"phone\": \"11990001122\"\n}"
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "Soft Delete Account",
@@ -105,33 +166,9 @@
               "path": [
                 "clientes"
               ]
-            },
-            "body": {}
-          }
-        },
-        {
-          "name": "Me",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/clientes/me",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "clientes",
-                "me"
-              ]
-            },
-            "body": {}
-          }
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -141,14 +178,27 @@
         {
           "name": "Create Wallet",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"walletName\": \"carteira 3\",\n  \"currency\": \"BRL\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
               }
-            ],
+            },
             "url": {
               "raw": "{{base_url}}/wallets",
               "host": [
@@ -157,24 +207,25 @@
               "path": [
                 "wallets"
               ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"walletName\": \"carteira 1\",\n  \"currency\": \"BRL\"\n}"
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "List Wallets",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
-              }
-            ],
+            "header": [],
             "url": {
               "raw": "{{base_url}}/wallets",
               "host": [
@@ -183,57 +234,90 @@
               "path": [
                 "wallets"
               ]
-            },
-            "body": {}
-          }
+            }
+          },
+          "response": []
         },
         {
           "name": "Get Wallet by ID",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "pm.environment.set(\"wallet.id\", jsonData[\"id\"]);"
+                ],
+                "type": "text/javascript",
+                "packages": {}
               }
-            ],
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
             "url": {
-              "raw": "{{base_url}}/wallets/{{wallet_id}}",
+              "raw": "{{base_url}}/wallets/:walletId",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "wallets",
-                "{{wallet_id}}"
+                ":walletId"
+              ],
+              "variable": [
+                {
+                  "key": "walletId",
+                  "value": "68897bfb391fdc7fda41b35c"
+                }
               ]
-            },
-            "body": {}
-          }
+            }
+          },
+          "response": []
         },
         {
           "name": "Delete Wallet",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "DELETE",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{base_url}}/wallets/{{wallet_id}}",
+              "raw": "{{base_url}}/wallets/:walletId",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "wallets",
-                "{{wallet_id}}"
+                ":walletId"
+              ],
+              "variable": [
+                {
+                  "key": "walletId",
+                  "value": "68897bff391fdc7fda41b35d"
+                }
               ]
-            },
-            "body": {}
-          }
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -243,111 +327,131 @@
         {
           "name": "Deposit",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PUT",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": 73.17,\n  \"currency\": \"BRL\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
               }
-            ],
+            },
             "url": {
-              "raw": "{{base_url}}/deposit/{{wallet_id}}",
+              "raw": "{{base_url}}/deposit/:walletId",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "deposit",
-                "{{wallet_id}}"
+                ":walletId"
+              ],
+              "variable": [
+                {
+                  "key": "walletId",
+                  "value": "{{wallet.id}}"
+                }
               ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"value\": 250.03,\n  \"currency\": \"BRL\"\n}"
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "Withdraw",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PUT",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": 100.0,\n  \"currency\": \"BRL\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
               }
-            ],
+            },
             "url": {
-              "raw": "{{base_url}}/withdraw/{{wallet_id}}",
+              "raw": "{{base_url}}/withdraw/:walletId",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "withdraw",
-                "{{wallet_id}}"
+                ":walletId"
+              ],
+              "variable": [
+                {
+                  "key": "walletId",
+                  "value": "{{wallet.id}}"
+                }
               ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"value\": 100.0,\n  \"currency\": \"BRL\"\n}"
             }
-          }
+          },
+          "response": []
         },
         {
-          "name": "Transfer (same user)",
+          "name": "Transfer",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PUT",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": 50.0,\n  \"currency\": \"BRL\",\n  \"targetWalletId\": \"68897a2cadb26477bc8a5048\",\n  \"targetDocument\":\"12345678900\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
               }
-            ],
+            },
             "url": {
-              "raw": "{{base_url}}/transfer/{{wallet_id}}",
+              "raw": "{{base_url}}/transfer/:sourceWalletId",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "transfer",
-                "{{wallet_id}}"
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"value\": 50.0,\n  \"currency\": \"BRL\",\n  \"walletIdTo\": \"{{wallet_id_dest}}\"\n}"
-            }
-          }
-        },
-        {
-          "name": "Transfer (other user)",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/transfer/client/{{wallet_id}}",
-              "host": [
-                "{{base_url}}"
+                ":sourceWalletId"
               ],
-              "path": [
-                "transfer",
-                "client",
-                "{{wallet_id}}"
+              "variable": [
+                {
+                  "key": "sourceWalletId",
+                  "value": "{{wallet.id}}"
+                }
               ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"value\": 50.0,\n  \"currency\": \"BRL\",\n  \"walletIdTo\": \"{{wallet_id_dest}}\",\n  \"documentTo\": \"00000000000\"\n}"
             }
-          }
+          },
+          "response": []
         }
       ]
     },
@@ -357,14 +461,18 @@
         {
           "name": "Get All Wallets Balance",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
-              }
-            ],
+            "header": [],
             "url": {
               "raw": "{{base_url}}/balance",
               "host": [
@@ -373,83 +481,123 @@
               "path": [
                 "balance"
               ]
-            },
-            "body": {}
-          }
+            }
+          },
+          "response": []
         },
         {
           "name": "Get Wallet Balance",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{base_url}}/balance/{{wallet_id}}",
+              "raw": "{{base_url}}/balance/:walletId",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "balance",
-                "{{wallet_id}}"
+                ":walletId"
+              ],
+              "variable": [
+                {
+                  "key": "walletId",
+                  "value": "{{wallet.id}}"
+                }
               ]
-            },
-            "body": {}
-          }
+            }
+          },
+          "response": []
         },
         {
-          "name": "Get Last 10 Transactions",
+          "name": "Get Transactions",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{base_url}}/balance/extract/{{wallet_id}}",
+              "raw": "{{base_url}}/balance/:walletId/last",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "balance",
-                "extract",
-                "{{wallet_id}}"
+                ":walletId",
+                "last"
+              ],
+              "variable": [
+                {
+                  "key": "walletId",
+                  "value": "{{wallet.id}}"
+                }
               ]
-            },
-            "body": {}
-          }
+            }
+          },
+          "response": []
         },
         {
           "name": "Get Transactions by Date",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{wallet.auth.token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}",
-                "type": "text"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{base_url}}/balance/extract/{{wallet_id}}?startDate=2025-07-01T00:00:00Z&endDate=2025-07-31T23:59:59Z",
+              "raw": "{{base_url}}/balance/:walletId/extract?startDate=2025-07-01&endDate=2025-07-31",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "balance",
-                "extract",
-                "{{wallet_id}}?startDate=2025-07-01T00:00:00Z&endDate=2025-07-31T23:59:59Z"
+                ":walletId",
+                "extract"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2025-07-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2025-07-31"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "walletId",
+                  "value": "{{wallet.id}}"
+                }
               ]
-            },
-            "body": {}
-          }
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -468,17 +616,23 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/audit/{{document}}",
+              "raw": "{{base_url}}/audit/:document",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "audit",
-                "{{document}}"
+                ":document"
+              ],
+              "variable": [
+                {
+                  "key": "document",
+                  "value": "12345678900"
+                }
               ]
-            },
-            "body": {}
-          }
+            }
+          },
+          "response": []
         },
         {
           "name": "Audit Logs by Document and Date",
@@ -498,11 +652,21 @@
               ],
               "path": [
                 "audit",
-                "{{document}}?startDate=2025-07-01T00:00:00Z&endDate=2025-07-26T23:59:59Z"
+                "{{document}}"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2025-07-01T00:00:00Z"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2025-07-26T23:59:59Z"
+                }
               ]
-            },
-            "body": {}
-          }
+            }
+          },
+          "response": []
         }
       ]
     }

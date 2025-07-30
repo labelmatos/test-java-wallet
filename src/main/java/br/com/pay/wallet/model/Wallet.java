@@ -1,24 +1,34 @@
 package br.com.pay.wallet.model;
 
 import br.com.pay.wallet.dto.WalletDTO;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 import java.util.Objects;
 
+@Document(collection = "wallets")
 public class Wallet {
-    private String _id;
+    @Id
+    private String id;
     private String walletName;
     private String currency;
     private String ownerDocument;
     private Date createdAt;
 
-    public static Wallet build() {
+    public static Wallet newInstance() {
         return new Wallet();
     }
 
     public String getId() {
-        return this._id;
+        return id;
     }
+
+    public Wallet setId(String id) {
+        this.id = id;
+        return this;
+    }
+
     public String getWalletName() {
         return walletName;
     }
@@ -59,16 +69,17 @@ public class Wallet {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Wallet wallet = (Wallet) o;
-        return Objects.equals(walletName, wallet.walletName) && Objects.equals(currency, wallet.currency) && Objects.equals(ownerDocument, wallet.ownerDocument);
+        return Objects.equals(id, wallet.id) && Objects.equals(walletName, wallet.walletName) && Objects.equals(currency, wallet.currency) && Objects.equals(ownerDocument, wallet.ownerDocument) && Objects.equals(createdAt, wallet.createdAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(walletName, currency, ownerDocument);
+        return Objects.hash(id, walletName, currency, ownerDocument, createdAt);
     }
 
     public WalletDTO toDTO() {
         return WalletDTO.build()
+                .setId(this.id)
                 .setCurrency(this.currency)
                 .setWalletName(this.walletName);
     }

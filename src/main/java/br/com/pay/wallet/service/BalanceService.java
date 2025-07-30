@@ -6,7 +6,6 @@ import br.com.pay.wallet.model.Statement;
 import br.com.pay.wallet.model.Wallet;
 import br.com.pay.wallet.repository.StatementRepository;
 import br.com.pay.wallet.repository.WalletsRepository;
-import com.mongodb.client.MongoClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +17,6 @@ import java.util.stream.Collectors;
 public class BalanceService {
 
     @Autowired
-    private MongoClient mongoClient;
-    @Autowired
     private AuditService auditService; // TODO: implementar
     @Autowired
     private WalletsRepository walletsRepository;
@@ -27,13 +24,13 @@ public class BalanceService {
     private StatementRepository statementRepository;
 
     public BalanceDTO getWalletBalance(String walletId, String document) {
-        final Wallet wallet = walletsRepository.findById(walletId);
+        final Wallet wallet = walletsRepository.findByIdAndOwnerDocument(walletId, document);
         if (wallet == null || !wallet.getOwnerDocument().equals(document)) {
             throw new IllegalArgumentException("Wallet not found.");
         }
 
-        final Statement lastStatement = statementRepository.findById(walletId);
-        if(lastStatement != null) {
+        final Statement lastStatement = statementRepository.findFirstByWalletIdOrderByCreatedAtDesc(walletId);
+        if (lastStatement != null) {
             return lastStatement.toBalanceDTO(wallet);
         }
         return BalanceDTO.build()
@@ -44,29 +41,29 @@ public class BalanceService {
     }
 
     public List<BalanceDTO> getAllWalletBalances(String document) {
-        List<Wallet> wallets = walletsRepository.list(document);
+        List<Wallet> wallets = walletsRepository.findByOwnerDocument(document);
         return wallets.stream()
                 .map(wallet -> this.getWalletBalance(wallet.getId(), document))
                 .collect(Collectors.toList());
     }
 
     public List<StatementDTO> getLastOperations(String walletId, String document) {
-        final Wallet wallet = walletsRepository.findById(walletId);
+        final Wallet wallet = walletsRepository.findByIdAndOwnerDocument(walletId, document);
         if (wallet == null || !wallet.getOwnerDocument().equals(document)) {
             throw new IllegalArgumentException("Wallet not found.");
         }
-        return statementRepository.list(walletId, 10)
+        return statementRepository.findByWalletIdOrderByCreatedAtDesc(walletId)
                 .stream()
                 .map(Statement::toDTO)
                 .collect(Collectors.toList());
     }
 
     public List<StatementDTO> getStatementByDate(String walletId, String document, LocalDate startDate, LocalDate endDate) throws Exception {
-        final Wallet wallet = walletsRepository.findById(walletId);
+        final Wallet wallet = walletsRepository.findByIdAndOwnerDocument(walletId, document);
         if (wallet == null || !wallet.getOwnerDocument().equals(document)) {
             throw new IllegalArgumentException("Wallet not found.");
         }
-        return statementRepository.list(walletId, startDate, endDate)
+        return statementRepository.findByWalletIdOrderByCreatedAtDesc(walletId)//.list(walletId, startDate, endDate)
                 .stream()
                 .map(Statement::toDTO)
                 .collect(Collectors.toList());

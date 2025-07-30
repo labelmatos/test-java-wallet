@@ -1,9 +1,15 @@
 package br.com.pay.wallet.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 import java.util.Objects;
 
+@Document(collection = "auditLogs")
 public class AuditLog {
+    @Id
+    private String id;
     private String document;
     private String action;
     private String currency;
@@ -12,6 +18,15 @@ public class AuditLog {
 
     public static AuditLog build() {
         return new AuditLog();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public AuditLog setId(String id) {
+        this.id = id;
+        return this;
     }
 
     public String getDocument() {

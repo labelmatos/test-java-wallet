@@ -6,7 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="d10f2d35-406e-4bbe-b382-260eb5898c17" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/config/MongoConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/config/MongoConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/WalletApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/WalletApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/config/MongoConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/AuditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/AuditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/ClientsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/ClientsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/DepositController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/DepositController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/WalletsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/controller/WalletsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/dto/WalletDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/dto/WalletDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Audit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/AuditLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/AuditLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Auth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Auth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/CurrencyTax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/CurrencyTax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Statement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Statement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/TransferMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/TransferMetadata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Wallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/model/Wallet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/AuditRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/AuditRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/AuthRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/AuthRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/ClientsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/ClientsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/CurrencyTaxRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/CurrencyTaxRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/StatementRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/StatementRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/WalletsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/repository/WalletsRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuditService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuditService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuthService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/BalanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/BalanceService.java" afterDir="false" />
@@ -15,6 +37,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/TransferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/TransferService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/WalletsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/WalletsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/WithdrawService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/WithdrawService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/util/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pay/wallet/util/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/postman-collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/postman-collection.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/br/com/pay/wallet/util/JwtUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/br/com/pay/wallet/util/JwtUtilTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,10 +104,10 @@
       <recent name="br.com.pay.wallet.util" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="br.com.pay.wallet.util" />
-      <recent name="br.com.pay.wallet.controller" />
       <recent name="br.com.pay.wallet.dto" />
       <recent name="br.com.pay.wallet.model" />
+      <recent name="br.com.pay.wallet.util" />
+      <recent name="br.com.pay.wallet.controller" />
       <recent name="br.com.pay.wallet.repository" />
     </key>
   </component>
@@ -195,9 +221,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/AuthService.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/pay/wallet/service/ClientsService.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

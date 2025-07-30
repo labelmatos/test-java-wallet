@@ -10,8 +10,6 @@ import br.com.pay.wallet.repository.StatementRepository;
 import br.com.pay.wallet.repository.WalletsRepository;
 import br.com.pay.wallet.util.DateUtil;
 import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,9 +17,6 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Date;
-
-import static com.mongodb.client.model.Filters.*;
-import static com.mongodb.client.model.Sorts.descending;
 
 @Service
 public class TransferService {
@@ -39,12 +34,12 @@ public class TransferService {
 
     public void transfer(String walletId, TransferDTO dto, String document) throws Exception {
 
-        final Wallet originWallet = walletsRepository.findById(walletId);
+        final Wallet originWallet = walletsRepository.findByIdAndOwnerDocument(walletId, document);
         if (originWallet == null || !originWallet.getOwnerDocument().equals(document)) {
             throw new IllegalArgumentException("Origin wallet not found.");
         }
 
-        final Wallet targetWallet = walletsRepository.findMineById(dto.targetWalletId, dto.targetDocument);
+        final Wallet targetWallet = walletsRepository.findByIdAndOwnerDocument(dto.targetWalletId, dto.targetDocument);
         if (targetWallet == null) {
             throw new IllegalArgumentException("target wallet not found.");
         }
@@ -52,20 +47,20 @@ public class TransferService {
         String originCurrency = originWallet.getCurrency();
         String targetCurrency = targetWallet.getCurrency();
 
-        final Statement lastOrigin = statementRepository.findById(walletId);
+        final Statement lastOrigin = statementRepository.findFirstByWalletIdOrderByCreatedAtDesc(walletId);
         if (dto.value > lastOrigin.getFinalValue()) {
             throw new IllegalArgumentException("Insufficient balance.");
         }
 
         double defaultRate = 1.0;
         if (!originCurrency.equals(targetCurrency)) {
-            final CurrencyTax currencyTax = currencyTaxRepository.find(originCurrency + "_" + targetCurrency);
+            final CurrencyTax currencyTax = currencyTaxRepository.findById(originCurrency + "_" + targetCurrency).orElse(null);
             if (currencyTax != null) {
                 defaultRate = currencyTax.getRate();
             }
         }
 
-        statementRepository.create(Statement.build()
+        statementRepository.insert(Statement.newInstance()
                 .setWalletId(walletId)
                 .setValue(dto.value)
                 .setCurrency(originCurrency)
@@ -80,20 +75,23 @@ public class TransferService {
                 .setCreatedAt(Date.from(Instant.now())));
 
         double convertedValue = dto.value * defaultRate;
-        final Statement targetLastStatement = statementRepository.findById(dto.targetWalletId);
-        statementRepository.create(Statement.build()
+        final Statement targetLastStatement = statementRepository.findFirstByWalletIdOrderByCreatedAtDesc(dto.targetWalletId);
+        final double targetPreviousValue = targetLastStatement != null ? targetLastStatement.getFinalValue() : 0.0;
+        statementRepository.insert(Statement.newInstance()
                 .setWalletId(dto.targetWalletId)
                 .setValue(convertedValue)
                 .setCurrency(targetCurrency)
-                .setPreviousValue(targetLastStatement.getFinalValue())
+                .setPreviousValue(targetPreviousValue)
                 .setOperation("transfer")
-                .setFinalValue(targetLastStatement.getFinalValue() + convertedValue)
+                .setFinalValue(targetPreviousValue + convertedValue)
                 .setFrom(TransferMetadata.build()
                         .setCurrency(walletId)
                         .setDocument(document)
                         .setWallet(originCurrency))
                 .setSearchDate(DateUtil.toNumeric(LocalDate.now()))
                 .setCreatedAt(Date.from(Instant.now())));
-        auditService.log(document, "TRANSFER", new Document("from", walletId).append("to", dto.targetWalletId));
+        auditService.log(document, "TRANSFER", new Document("from", walletId)
+                .append("to", dto.targetWalletId)
+                .append("value", dto.value));
     }
 }

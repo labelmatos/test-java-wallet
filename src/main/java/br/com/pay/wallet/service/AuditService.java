@@ -19,19 +19,15 @@ public class AuditService {
     private AuditRepository auditRepository;
 
     public void log(String document, String action, Object details) {
-        auditRepository.create(AuditLog.build()
+        auditRepository.insert(AuditLog.build()
                 .setDocument(document)
                 .setAction(action)
                 .setDetails(details)
                 .setCreatedAt(Date.from(Instant.now())));
     }
 
-    public List<AuditLog> getLogsByDocument(String document) {
-        return auditRepository.list(document);
-    }
-
     public List<AuditLog> getLogsByDocument(String document, String startDate, String endDate) {
-        return auditRepository.findByDate(document, startDate, endDate);
+        return auditRepository.findByDocumentOrderByCreatedAtDesc(document);
     }
 }
 

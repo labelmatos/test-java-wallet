@@ -24,8 +24,7 @@ public class DepositController {
             if (JwtUtil.isTokenExpired(token)) {
                 return ResponseEntity.status(401).body("Expired Token. Sign in again.");
             }
-            String document = JwtUtil.extractSubject(token);
-            depositService.deposit(walletId, dto, document);
+            depositService.deposit(walletId, dto, JwtUtil.extractSubject(token));
             return ResponseEntity.ok("Deposit success.");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(412).body(e.getMessage());

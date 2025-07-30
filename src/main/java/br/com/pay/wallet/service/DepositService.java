@@ -28,8 +28,7 @@ public class DepositService {
     private StatementRepository statementRepository;
 
     public void deposit(String walletId, DepositDTO dto, String document) throws Exception {
-        final Wallet wallet = walletsRepository.findById(walletId);
-
+        final Wallet wallet = walletsRepository.findByIdAndOwnerDocument(walletId, document);
         if (wallet == null || !wallet.getOwnerDocument().equals(document)) {
             throw new IllegalArgumentException("Wallet not found.");
         }
@@ -38,11 +37,11 @@ public class DepositService {
             throw new IllegalArgumentException("Wrong currency for this wallet.");
         }
 
-        final Statement last = statementRepository.findById(walletId);
+        final Statement last = statementRepository.findFirstByWalletIdOrderByCreatedAtDesc(walletId);
         final double previousValue = last != null ? last.getFinalValue() : 0.0;
         final double finalValue = previousValue + dto.value;
 
-        statementRepository.create(Statement.build()
+        statementRepository.insert(Statement.newInstance()
                 .setWalletId(walletId)
                 .setValue(dto.value)
                 .setCurrency(dto.currency)

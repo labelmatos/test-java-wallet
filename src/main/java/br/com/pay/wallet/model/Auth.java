@@ -1,15 +1,30 @@
 package br.com.pay.wallet.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 import java.util.Objects;
 
+@Document(collection = "authLogs")
 public class Auth {
+    @Id
+    private String id;
     private String document;
     private String status;
     private Date createdAt;
 
     public static Auth build() {
         return new Auth();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Auth setId(String id) {
+        this.id = id;
+        return this;
     }
 
     public String getDocument() {

@@ -1,20 +1,45 @@
 package br.com.pay.wallet.model;
 
 import br.com.pay.wallet.dto.ClientDTO;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Objects;
 
+@Document(collection = "clients")
 public class Client {
+    @Id
+    private String id;
     private String firstName;
     private String lastName;
     private String nickName;
-    private String document;
     private String phone;
     private String password;
     private String location;
 
-    public static Client build() {
+    public static Client newInstance() {
         return new Client();
+    }
+
+    public Client() {}
+
+    public Client(String id, String firstName, String lastName, String nickName, String phone, String password, String location) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nickName = nickName;
+        this.phone = phone;
+        this.password = password;
+        this.location = location;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Client setId(String id) {
+        this.id = id;
+        return this;
     }
 
     public String getFirstName() {
@@ -41,15 +66,6 @@ public class Client {
 
     public Client setNickName(String nickName) {
         this.nickName = nickName;
-        return this;
-    }
-
-    public String getDocument() {
-        return document;
-    }
-
-    public Client setDocument(String document) {
-        this.document = document;
         return this;
     }
 
@@ -84,22 +100,21 @@ public class Client {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(firstName, client.firstName) && Objects.equals(lastName, client.lastName) && Objects.equals(nickName, client.nickName) && Objects.equals(document, client.document) && Objects.equals(phone, client.phone) && Objects.equals(password, client.password) && Objects.equals(location, client.location);
+        return Objects.equals(firstName, client.firstName) && Objects.equals(lastName, client.lastName) && Objects.equals(nickName, client.nickName) && Objects.equals(phone, client.phone) && Objects.equals(password, client.password) && Objects.equals(location, client.location);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, nickName, document, phone, password, location);
+        return Objects.hash(firstName, lastName, nickName, phone, password, location);
     }
 
     public ClientDTO toDTO() {
         return ClientDTO.build()
-                .setDocument(this.document)
+                .setDocument(this.id)
                 .setFirstName(this.firstName)
                 .setLastName(this.lastName)
                 .setNickName(this.nickName)
                 .setPhone(this.phone)
                 .setLocation(this.location);
-                // never return the password
     }
 }

@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/wallets")
 public class WalletsController {
@@ -25,9 +23,8 @@ public class WalletsController {
             if (JwtUtil.isTokenExpired(token)) {
                 return ResponseEntity.status(401).body("Expired Token. Sign in again.");
             }
-            String document = JwtUtil.extractSubject(token);
-            walletsService.createWallet(walletDTO, document);
-            return ResponseEntity.ok("Wallet criada com sucesso");
+            walletsService.createWallet(walletDTO, JwtUtil.extractSubject(token));
+            return ResponseEntity.ok("Wallet created.");
         } catch (JwtException e) {
             return ResponseEntity.status(401).body("Expired Token. Sign in again.");
         } catch (Exception e) {
@@ -42,12 +39,29 @@ public class WalletsController {
             if (JwtUtil.isTokenExpired(token)) {
                 return ResponseEntity.status(401).body("Expired Token. Sign in again.");
             }
-            final String document = JwtUtil.extractSubject(token);
-            return ResponseEntity.ok(walletsService.listWallets(document));
+            return ResponseEntity.ok(walletsService.listWallets(JwtUtil.extractSubject(token)));
         } catch (JwtException e) {
             return ResponseEntity.status(401).body("Expired Token. Sign in again.");
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("Error to list wallets.");
+        }
+    }
+
+    @GetMapping("/{walletId}")
+    public ResponseEntity<?> getWallet(@RequestHeader("Authorization") String authHeader,
+                                          @PathVariable String walletId) {
+        try {
+            final String token = authHeader.replace("Bearer ", "");
+            if (JwtUtil.isTokenExpired(token)) {
+                return ResponseEntity.status(401).body("Expired Token. Sign in again.");
+            }
+            return ResponseEntity.ok(walletsService.findWallet(walletId, JwtUtil.extractSubject(token)));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(412).body(e.getMessage());
+        } catch (JwtException e) {
+            return ResponseEntity.status(401).body("Expired Token. Sign in again.");
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Error to find wallet.");
         }
     }
 
@@ -59,8 +73,7 @@ public class WalletsController {
             if (JwtUtil.isTokenExpired(token)) {
                 return ResponseEntity.status(401).body("Expired Token. Sign in again.");
             }
-            String document = JwtUtil.extractSubject(token);
-            walletsService.deleteWallet(walletId, document);
+            walletsService.deleteWallet(walletId, JwtUtil.extractSubject(token));
             return ResponseEntity.ok("Wallet deleted with success.");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(412).body(e.getMessage());

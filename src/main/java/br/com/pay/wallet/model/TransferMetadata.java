@@ -1,8 +1,14 @@
 package br.com.pay.wallet.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Objects;
 
+//@Document(collection = "currencyTaxes")
 public class TransferMetadata {
+//    @Id
+//    private String id;
     private String wallet;
     private String document;
     private String currency;
@@ -19,6 +25,15 @@ public class TransferMetadata {
         this.wallet = wallet;
         return this;
     }
+
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public TransferMetadata setId(String id) {
+//        this.id = id;
+//        return this;
+//    }
 
     public String getDocument() {
         return document;

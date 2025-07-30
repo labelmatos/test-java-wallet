@@ -16,8 +16,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthDTO authDTO) {
         try {
-            final String token = authService.authenticate(authDTO.document, authDTO.password);
-            return ResponseEntity.ok().body(token);
+            return ResponseEntity.ok().body(authService.authenticate(authDTO.document, authDTO.password));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(401).body("Invalid username or password.");
         } catch (Exception e) {

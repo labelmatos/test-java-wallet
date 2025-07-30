@@ -15,9 +15,9 @@ public class JwtUtil {
 
     public static String generateToken(Client client) {
         return Jwts.builder()
-                .setSubject(client.getDocument())
+                .setSubject(client.getId())
                 .setIssuedAt(new Date())
-                .setExpiration(Date.from(Instant.now().plusSeconds(600))) // 10 minutes
+                .setExpiration(Date.from(Instant.now().plusSeconds(60000))) // 10 minutes
                 .signWith(secretKey, SignatureAlgorithm.HS256)
                 .compact();
     }

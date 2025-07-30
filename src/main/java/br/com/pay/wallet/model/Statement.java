@@ -2,11 +2,16 @@ package br.com.pay.wallet.model;
 
 import br.com.pay.wallet.dto.BalanceDTO;
 import br.com.pay.wallet.dto.StatementDTO;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 import java.util.Objects;
 
+@Document(collection = "statements")
 public class Statement {
+    @Id
+    private String id;
     private String walletId;
     private double value;
     private String currency;
@@ -18,8 +23,17 @@ public class Statement {
     private int searchDate;
     private Date createdAt;
 
-    public static Statement build() {
+    public static Statement newInstance() {
         return new Statement();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Statement setId(String id) {
+        this.id = id;
+        return this;
     }
 
     public String getWalletId() {
