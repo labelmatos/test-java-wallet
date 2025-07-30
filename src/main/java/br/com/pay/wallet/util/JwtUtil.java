@@ -11,14 +11,14 @@ import java.time.Instant;
 import java.util.Date;
 
 public class JwtUtil {
-    private static final SecretKey secretKey = Keys.hmacShaKeyFor("MySuperSecretKeyForJwtThatIsAtLeast32BytesLong".getBytes(StandardCharsets.UTF_8));
+    private static final Key SECRET_KEY = Keys.hmacShaKeyFor("MySuperSecretKeyForJwtThatIsAtLeast32BytesLong".getBytes(StandardCharsets.UTF_8));
 
     public static String generateToken(Client client) {
         return Jwts.builder()
                 .setSubject(client.getId())
                 .setIssuedAt(new Date())
-                .setExpiration(Date.from(Instant.now().plusSeconds(60000))) // 10 minutes
-                .signWith(secretKey, SignatureAlgorithm.HS256)
+                .setExpiration(Date.from(Instant.now().plusSeconds(600))) // 10 minutes
+                .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
                 .compact();
     }
 
@@ -29,7 +29,7 @@ public class JwtUtil {
                 .parseClaimsJws(token)
                 .getBody();
     }
-    private static final Key SECRET_KEY = Keys.hmacShaKeyFor("MySuperSecretKeyForJwtThatIsAtLeast32BytesLong".getBytes(StandardCharsets.UTF_8));
+
 
     public static String extractSubject(String token) {
         return Jwts.parserBuilder()

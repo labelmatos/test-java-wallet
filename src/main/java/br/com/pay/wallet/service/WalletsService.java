@@ -46,7 +46,7 @@ public class WalletsService {
         return wallet.toDTO();
     }
 
-    public void deleteWallet(String walletId, String document) {
+    public void deleteWallet(String walletId, String document) throws Exception {
         final Wallet wallet = walletsRepository.findByIdAndOwnerDocument(walletId, document);
         if (wallet == null || !wallet.getOwnerDocument().equals(document)) {
             throw new IllegalArgumentException("Wallet not found.");

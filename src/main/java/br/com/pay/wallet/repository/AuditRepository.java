@@ -10,4 +10,7 @@ import java.util.List;
 public interface AuditRepository extends MongoRepository<AuditLog, String> {
 
     List<AuditLog> findByDocumentOrderByCreatedAtDesc(String document);
+
+    List<AuditLog> findByDocumentAndSearchDateBetweenOrderByCreatedAtDesc(String document, int numeric, int numeric1);
+
 }

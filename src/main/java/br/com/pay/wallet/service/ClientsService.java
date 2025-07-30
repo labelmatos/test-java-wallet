@@ -45,7 +45,7 @@ public class ClientsService {
         );
     }
 
-    public void updatePartial(String document, ClientDTO dto) {
+    public void updatePartial(String document, ClientDTO dto) throws Exception {
         final Client persisted = clientsRepository.findById(document).orElseGet(null);
 
         if (persisted == null) {

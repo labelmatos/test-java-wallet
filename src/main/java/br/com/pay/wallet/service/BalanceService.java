@@ -6,6 +6,7 @@ import br.com.pay.wallet.model.Statement;
 import br.com.pay.wallet.model.Wallet;
 import br.com.pay.wallet.repository.StatementRepository;
 import br.com.pay.wallet.repository.WalletsRepository;
+import br.com.pay.wallet.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,7 +64,7 @@ public class BalanceService {
         if (wallet == null || !wallet.getOwnerDocument().equals(document)) {
             throw new IllegalArgumentException("Wallet not found.");
         }
-        return statementRepository.findByWalletIdOrderByCreatedAtDesc(walletId)//.list(walletId, startDate, endDate)
+        return statementRepository.findByWalletIdAndSearchDateBetweenOrderByCreatedAtDesc(walletId, DateUtil.toNumeric(startDate), DateUtil.toNumeric(endDate))
                 .stream()
                 .map(Statement::toDTO)
                 .collect(Collectors.toList());

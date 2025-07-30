@@ -10,6 +10,9 @@ import java.util.List;
 public interface StatementRepository extends MongoRepository<Statement, String> {
     List<Statement> findByWalletIdOrderByCreatedAtDesc(String walletId);
 
+    List<Statement> findByWalletIdAndSearchDateBetweenOrderByCreatedAtDesc(String walletId, int searchDateStart, int searchDateEnd);
+
     Statement findFirstByWalletIdOrderByCreatedAtDesc(String walletId);
+
 
 }

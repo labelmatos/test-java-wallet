@@ -12,8 +12,8 @@ public class AuditLog {
     private String id;
     private String document;
     private String action;
-    private String currency;
     private Object details;
+    private int searchDate;
     private Date createdAt;
 
     public static AuditLog build() {
@@ -47,21 +47,21 @@ public class AuditLog {
         return this;
     }
 
-    public String getCurrency() {
-        return currency;
-    }
-
-    public AuditLog setCurrency(String currency) {
-        this.currency = currency;
-        return this;
-    }
-
     public Object getDetails() {
         return details;
     }
 
     public AuditLog setDetails(Object details) {
         this.details = details;
+        return this;
+    }
+
+    public int getSearchDate() {
+        return searchDate;
+    }
+
+    public AuditLog setSearchDate(int searchDate) {
+        this.searchDate = searchDate;
         return this;
     }
 
@@ -78,11 +78,11 @@ public class AuditLog {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         AuditLog auditLog = (AuditLog) o;
-        return Objects.equals(document, auditLog.document) && Objects.equals(action, auditLog.action) && Objects.equals(currency, auditLog.currency) && Objects.equals(details, auditLog.details) && Objects.equals(createdAt, auditLog.createdAt);
+        return searchDate == auditLog.searchDate && Objects.equals(id, auditLog.id) && Objects.equals(document, auditLog.document) && Objects.equals(action, auditLog.action) && Objects.equals(details, auditLog.details) && Objects.equals(createdAt, auditLog.createdAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(document, action, currency, details, createdAt);
+        return Objects.hash(id, document, action, details, searchDate, createdAt);
     }
 }
